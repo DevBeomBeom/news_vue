@@ -1,34 +1,27 @@
 <template>
   <div>
-      <div v-for="user in users" v-bind:key ="user.id"> {{ user.title }}</div>
+      <!-- <div v-for="user in this.$store.state.news" v-bind:key ="user.id"> {{ user.title }}</div> -->
+      <p v-for="item in fetchedNews" v-bind:key ="item.id">
+        <a :href="item.url">{{ item.title }}</a>
+        <small> {{item.time_ago}} by {{item.user}}</small>
+      </p>
   </div>
 </template>
 
 <script>
 // import axios from 'axios';
-import { fetchNewsList } from '../api/index.js'
-
+// import { fetchNewsList } from '../api/index.js'
+import {mapGetters} from 'vuex';
 
 export default {
-  data(){
-    return {
-      users: []
-    }
-  },
+  computed:{
+    ...mapGetters([
+      'fetchedNews'
+    ])
+    },
   created() {
-    console.log('호출 전 :', this);
-    // var vm = this;
-    // axios.get('https://api.hnpwa.com/v0/news/1.json')
-    fetchNewsList()
-      .then(response => {
-        console.log('호출 후:', this);
-        this.users = response.data;
-      })
-      .catch(function(error){
-        console.log(error);
-      })
+    this.$store.dispatch('FETCH_NEWS');
   }
-
 }
 </script>
 
