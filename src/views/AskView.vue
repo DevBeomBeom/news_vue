@@ -1,19 +1,20 @@
+
 <template>
   <div>
-      <!-- <div v-for="item in fetchedAsk" v-bind:key ="item.title"> {{ item.title }}</div> -->
-       <p v-for="item in fetchedAsk" v-bind:key ="item.id">
-        <a :href="item.url">{{ item.title }}</a>
-        <small> {{item.time_ago}} by {{item.user}}</small>
-      </p>
+   <list-item></list-item>
   </div>
 </template>
 
 <script>
+import ListItem from '../components/ListItem.vue';
 import {mapGetters} from 'vuex';
 // import {mapGetters, mapState} from 'vuex';
 
 
 export default {
+  components:{
+    ListItem,
+  },
   computed:{
      ...mapGetters([
        'fetchedAsk'
@@ -39,7 +40,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>
