@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import NewsView  from '../views/NewsView.vue';
