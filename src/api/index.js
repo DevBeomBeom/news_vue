@@ -29,6 +29,10 @@ function fetchCommentItem(id){
    return axios.get(`${config.baseUrl}item/${id}.json`)
 }
 
+function fetchMyInfo(){
+   return axios.get(`${config.baseUrl}user/davideast.json`);
+}
+
 
 export{
     fetchNewsList
@@ -36,4 +40,5 @@ export{
     ,fetchAskList
     ,fetchUserInfo
     ,fetchCommentItem
+    ,fetchMyInfo
 }
