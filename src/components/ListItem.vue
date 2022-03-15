@@ -37,7 +37,7 @@
 
 <script>
 
-import {mapGetters} from 'vuex';
+// import {mapGetters} from 'vuex';
 
 
 export default {
@@ -45,36 +45,45 @@ export default {
   created() {
     // this.$route.path ==='/news'
     const name = this.$route.name;
-    // const actionName = '';
+    let actionName = '';
 
     if(name === 'news'){
-      // actionName ='FETCH_NEWS';
-      this.$store.dispatch('FETCH_NEWS');
+      actionName ='FETCH_NEWS';
+      // this.$store.dispatch('FETCH_NEWS');
     }else if( name === 'ask'){
-      //  actionName ='FETCH_ASK';
-      this.$store.dispatch('FETCH_ASK');
+       actionName ='FETCH_ASK';
+      // this.$store.dispatch('FETCH_ASK');
     }else if(name === 'jobs'){
-      //  actionName ='FETCH_JOBS';
-      this.$store.dispatch('FETCH_JOBS');
+       actionName ='FETCH_JOBS';
+      // this.$store.dispatch('FETCH_JOBS');
     }
+    this.$store.dispatch(actionName);
     // this.$store.dispatch(actionName);
   },
   computed:{
    listItems(){
      const name = this.$route.name;
+    //  let fetchedName = '';
     if(name === 'news'){
+      // fetchedName ='fetchedNews'
       return this.$store.state.news;
     }else if( name === 'ask'){
       return this.$store.state.ask;
+      // fetchedName ='fetchedAsk'
     }else if(name === 'jobs'){
+      // fetchedName ='fetchedJobs'
       return this.$store.state.jobs;
     }else{
-      return this.$store.state.jobs;
+      // fetchedName ='';
+      return '';
     }
+    // return mapGetters([
+    //   'fetchedJobs'
+    // ])
    }
-   ,...mapGetters([
-     'fetchedNews'
-   ])
+  //  ,...mapGetters([
+  //    fetchedName
+  //  ])
  },
 }
 </script>
