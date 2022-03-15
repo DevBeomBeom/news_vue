@@ -22,13 +22,13 @@ function fetchAskList(){
 }
 
 function fetchUserInfo(username){
-//    return axios.get(config.baseUrl + 'news/1.json');
    return axios.get(`${config.baseUrl}user/${username}.json`);
 }
 
 function fetchCommentItem(id){
    return axios.get(`${config.baseUrl}item/${id}.json`)
 }
+
 
 export{
     fetchNewsList
